@@ -9,7 +9,7 @@ Write-Host "`n1. Initial State:"
 
 Write-Host "`n2. Triggering failures to open the circuit..."
 for ($i = 1; $i -le 10; $i++) {
-    Write-Host -NoNewline "Request $i: "
+    Write-Host -NoNewline "Request ${i}: "
     try {
         $response = Invoke-RestMethod -Uri "$BASE_URL/users/$i"
         if ($response.id) {
@@ -47,7 +47,7 @@ Write-Host "`n6. Checking State (Should be HALF_OPEN or CLOSED):"
 
 Write-Host "`n7. Making a few more requests to stabilize to CLOSED..."
 for ($i = 1; $i -le 5; $i++) {
-    Write-Host -NoNewline "Request $i: "
+    Write-Host -NoNewline "Request ${i}: "
     try {
         $response = Invoke-RestMethod -Uri "$BASE_URL/users/200$i"
         if ($response.id) {
